@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\Cargo;
+use barryvdh\DomPDF\faced as PDF;
 
 class CargoController extends Controller{
     

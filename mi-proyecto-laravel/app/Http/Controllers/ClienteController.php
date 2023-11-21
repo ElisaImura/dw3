@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request; 
 use App\Models\Cliente; 
-use App\Models\Cargo; 
+use App\Models\Cargo;
+use barryvdh\DomPDF\faced as PDF;
 
 class ClienteController extends Controller {
 
@@ -53,7 +54,7 @@ class ClienteController extends Controller {
 
     public function formulario(){
         $cargos =Cargo::pluck('nombre','id');
-    	return view('clientes.formulario');
+    	return view('clientes.formulario', compact('cargos'));
     }
     public function eliminar($id){
         $clientes =Cliente::find($id);
@@ -62,7 +63,7 @@ class ClienteController extends Controller {
     }
     public function editar($id){
         $clientes=Cliente::find($id);
-        return view('clientes.editar',compact('clientes'));
+        return view('clientes.editar',compact('clientes'),compact('cargos'));
 
     }
     public function actualizar(Request $request, $id)
