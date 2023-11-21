@@ -14,7 +14,7 @@ class CreateClientesTable extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->text('nombre');
             $table->text('apellido');
             $table->integer('edad');
@@ -22,6 +22,9 @@ class CreateClientesTable extends Migration
             $table->text('correo');
             $table->date('fecha_nac');
             $table->text('estado');
+            $table->string('telefono');
+            $table->unsignedBigInteger('id_cargo');
+            $table->foreign('id_cargo')->references('id')->on('cargos');
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class CreateClientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('profesores');
     }
 }
