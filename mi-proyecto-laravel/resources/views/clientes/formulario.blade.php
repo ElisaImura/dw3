@@ -4,6 +4,7 @@
 <script src="{{asset('js/jsdelivr_boot.js')}}"></script>
 
 @include('clientes.menu')
+<?php use App\Models\Cargo;  $cargos =Cargo::pluck('nombre','id'); ?>
 
 </head>
     <div class="container" style="margin-top: 50px; margin-bottom: 50px;">

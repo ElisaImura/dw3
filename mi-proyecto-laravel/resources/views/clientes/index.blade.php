@@ -15,10 +15,10 @@
     <div class="d-flex justify-content-between align-items-center">
         <h1>Listado de Clientes</h1>
 
-        <a href="{{ route('nuevo') }}" class="btn btn-primary">Nuevo</a>
+        <a href="{{ route('ClienteNuevo') }}" class="btn btn-primary">Nuevo</a>
     </div>
     <div class="input-group mb-3">
-        <form action="{{ route('buscar') }}"class="d-flex">
+        <form action="{{ route('Clientebuscar') }}"class="d-flex">
         <input name="buscar" class="form-control me-1" type="search" placeholder="Buscar" aria-label="Search">
         <button class="btn btn-light" type="submit">Buscar</button>
       </form>
@@ -46,6 +46,7 @@
                 <th>Correo</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Telefono</th>
+                <th>Sector</th>
                 <th>Estado</th>
                 <th>Accion</th>
             </tr>
@@ -62,8 +63,8 @@
                 <td>{{ $cliente->fecha_nac ?? 'NN' }}</td>
                 <td>{{ $cliente->telefono ?? 'NN' }}</td>
                 
-                </strong><br> Sector: <strong></td>
-                    <td>nombre:<strong>{{$cliente->cargo->sector}}
+                </strong><br><strong></td>
+                    <td>nombre:<strong>{{$cliente->cargo->nombre}}
                     </strong><br> Sector: <strong>{{$cliente->cargo->sector}}</strong></td>
 
                 <td>
@@ -76,12 +77,12 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('eliminar', ['id' => $cliente->id]) }}"
+                    <a href="{{ route('Clienteeliminar', ['id' => $cliente->id]) }}"
                         onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');"
                         class="btn btn-danger">Eliminar
                     </a>
-                    <a href="{{ route('editar', ['id' => $cliente->id]) }}" class="btn btn-info">Editar</a>
-                    <a href="{{ route('ver', ['id' => $cliente->id]) }}" class="btn btn-info">Ver</a>
+                    <a href="{{ route('Clienteeditar', ['id' => $cliente->id]) }}" class="btn btn-info">Editar</a>
+                    <a href="{{ route('Clientever', ['id' => $cliente->id]) }}" class="btn btn-info">Ver</a>
                 </td>
             </tr>
             @endforeach

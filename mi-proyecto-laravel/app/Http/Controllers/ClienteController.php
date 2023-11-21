@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request; 
 use App\Models\Cliente; 
+use App\Models\Cargo; 
 
 class ClienteController extends Controller {
 
@@ -44,21 +45,20 @@ class ClienteController extends Controller {
             'correo' => $request->input('correo'),
             'fecha_nac' => $request->input('fecha_nac'),
             'estado' => $request->input('estado'),
-            'id_cargo' => $request->input('id_cargo'),
             'telefono' => $request->input('telefono'),
-            'telefono' => $request->input('id_cargo'),
+            'id_cargo' => $request->input('id_cargo'),
         ]);
-    	return redirect()->route('index')->with('success','Se creo correctamente!');
+    	return redirect()->route('Clienteindex')->with('success','Se creo correctamente!');
     }
 
     public function formulario(){
-        $cargos =cargo::pluck('nombre','id');
+        $cargos =Cargo::pluck('nombre','id');
     	return view('clientes.formulario');
     }
     public function eliminar($id){
         $clientes =Cliente::find($id);
         $clientes->delete();
-        return redirect()->route('index');
+        return redirect()->route('Clienteindex');
     }
     public function editar($id){
         $clientes=Cliente::find($id);
@@ -78,7 +78,7 @@ class ClienteController extends Controller {
         $clientes->telefono = $request->input('telefono');
         $clientes->id_cargo = $request->input('id_cargo');
         $clientes->save();
-        return redirect()->route('index');
+        return redirect()->route('Clienteindex');
     }
 
     public function ver($id){
@@ -103,7 +103,7 @@ class ClienteController extends Controller {
     }
 
     public function generarPDF(){
-        $clientes = cliente::all();
+        $clientes = Cliente::all();
         $pdf =PDF::loadView('clientes.pdf',compact('clientes'));
         return $pdf->download('clientes.pdf');
     }

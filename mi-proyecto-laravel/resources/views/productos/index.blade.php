@@ -15,10 +15,10 @@
     <div class="d-flex justify-content-between align-items-center">
         <h1>Listado de Productos</h1>
 
-        <a href="{{ route('nuevo') }}" class="btn btn-primary">Nuevo</a>
+        <a href="{{ route('ProductoNuevo') }}" class="btn btn-primary">Nuevo</a>
     </div>
     <div class="input-group mb-3">
-        <form action="{{ route('buscar') }}"class="d-flex">
+        <form action="{{ route('Productobuscar') }}"class="d-flex">
         <input name="buscar" class="form-control me-1" type="search" placeholder="Buscar" aria-label="Search">
         <button class="btn btn-light" type="submit">Buscar</button>
       </form>
@@ -71,12 +71,12 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('eliminar', ['id' => $producto->id]) }}"
+                    <a href="{{ route('Productoeliminar', ['id' => $producto->id]) }}"
                         onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');"
                         class="btn btn-danger">Eliminar
                     </a>
-                    <a href="{{ route('editar', ['id' => $producto->id]) }}" class="btn btn-info">Editar</a>
-                    <a href="{{ route('ver', ['id' => $producto->id]) }}" class="btn btn-info">Ver</a>
+                    <a href="{{ route('Productoeditar', ['id' => $producto->id]) }}" class="btn btn-info">Editar</a>
+                    <a href="{{ route('Productover', ['id' => $producto->id]) }}" class="btn btn-info">Ver</a>
                 </td>
             </tr>
             @endforeach

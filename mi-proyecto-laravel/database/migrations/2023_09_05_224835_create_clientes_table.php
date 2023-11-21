@@ -22,7 +22,7 @@ class CreateClientesTable extends Migration
             $table->text('correo');
             $table->date('fecha_nac');
             $table->text('estado');
-            $table->string('telefono');
+            $table->text('telefono');
             $table->unsignedBigInteger('id_cargo');
             $table->foreign('id_cargo')->references('id')->on('cargos');
             $table->timestamps();

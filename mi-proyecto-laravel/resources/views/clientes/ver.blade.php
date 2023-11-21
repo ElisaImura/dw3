@@ -13,7 +13,7 @@
                     <div class="card-header">Formulario de edicion de Cliente</div>
                     
                     <div class="card-body">
-                      <form  method="post" action="{{route('actualizar',['id'=>$clientes->id])}}">
+                      <form  method="post" action="{{route('Clienteactualizar',['id'=>$clientes->id])}}">
                             @csrf <!-- Campo CSRF -->
                            
                             <div class="form-group">
