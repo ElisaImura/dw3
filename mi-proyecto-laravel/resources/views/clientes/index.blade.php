@@ -12,10 +12,19 @@
     </div>
     @endif
 
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
     <div class="d-flex justify-content-between align-items-center">
         <h1>Listado de Clientes</h1>
 
-        <a href="{{ route('ClienteNuevo') }}" class="btn btn-primary">Nuevo</a>
+        <div>
+            <a href="{{ route('ClienteNuevo') }}" class="btn btn-primary">Nuevo</a>
+            <a href="{{ route('clientes.pdf') }}" class="btn btn-primary">Generar reporte</a>
+        </div>
     </div>
     <div class="input-group mb-3">
         <form action="{{ route('Clientebuscar') }}"class="d-flex">

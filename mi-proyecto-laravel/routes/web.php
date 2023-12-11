@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
@@ -37,6 +36,7 @@ Route::get('clientes/editar/{id}',[ClienteController::class,'editar'])->name('Cl
 Route::post('clientes/actualizar/{id}',[ClienteController::class,'actualizar'])->name('Clienteactualizar');
 Route::get('clientes/ver/{id}',[ClienteController::class,'ver'])->name('Clientever');
 Route::get('clientes/buscar',[ClienteController::class,'buscar'])->name('Clientebuscar');
+Route::get('clientes.pdf',[ClienteController::class,'generarPDF'])->name('clientes.pdf');
 
 
 

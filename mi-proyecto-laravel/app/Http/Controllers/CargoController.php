@@ -38,10 +38,19 @@ class CargoController extends Controller{
     public function formulario(){
         return view('cargos.formulario');
     }
+
+
     public function eliminar($id){
-        $cargos =Cargo::find($id);
-        $cargos->delete();
-        return redirect()->route('Cargoindex');
+        try{
+            $cargos =Cargo::find($id);
+            if(!$cargos){
+                return redirect()->route('Cargoindex')->with('error','Cargo no encontrado');
+            }
+            $cargos->delete();
+            return redirect()->route('Cargoindex');
+        }catch(\Exception $e){
+            return redirect()->route('Cargoindex')->with('error','No se puede eliminar porque el cargo esta en uso');
+        }
     }
     public function editar($id){
         $cargos=Cargo::find($id);
